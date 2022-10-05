@@ -43,7 +43,7 @@
     <section class="d-flex flex-row px-5 py-4">
         <!-- left -->
         <div class="border w-50 mx-3 p-3" style="background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-            <p><span style="color: rgb(255, 136, 0); " class="font-weight-bold">Races 7</span> resultats</p>
+            <p><span style="color: rgb(255, 136, 0); " class="font-weight-bold" ">Races <span id="raceNumber"></span></span> resultats</p>
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn">par...</button>
                 <div id="myDropdown" class="dropdown-content">
@@ -60,7 +60,13 @@
                 style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
                 <p style="color: rgb(255, 136, 0); " class="font-weight-bold">Person</p>
                 <div class="d-flex justify-content-center align-items-end">
-                    <p class="border">mise en forme des information</p>
+                    <!-- <p class="border " id="info">mise en forme des information</p> -->
+                    <div>
+                        <p>breed : <span id="breed"></span></p>
+                        <p>country : <span id="country"></span></p>
+                        <p>origin : <span id="origin"></span></p>
+                        <p>pattern : <span id="pattern"></span></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,42 +87,59 @@
 
 
 <script>
-    async function testA() {
-        let request = await fetch(`https://catfact.ninja/breeds?limit=5`);
-        let repose = await request.json().then(result => {
-            //console.log(result.data)
-            let dropdown = document.querySelector("#myDropdown");
-            for (const i in result.data) {
-               // console.log(result.data[i].breed)
-                let a = document.createElement("a")
-                var text = document.createTextNode(result.data[i].breed);
-                a.appendChild(text);
-                a.setAttribute('id', result.data[i].breed)
-                dropdown.appendChild(a);
-            }
-
-        })
-            .catch("error");
-        return repose;
-    }
-
-    testA()
 
 
-    
-        // document.querySelector("#myDropdown").addEventListener("click", function (event) {
-        //     console.log(e)
-         
-        // });
 
-        let test = document.querySelector('#myDropdown').children
+    const fetchPromise = fetch("https://catfact.ninja/breeds?limit=10");
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(item => {
         
-       console.log(test)
-    
+        document.querySelector('#raceNumber').innerHTML = item.data.length
+
+        
+        let dropdown = document.querySelector("#myDropdown");
+        item.data.map(i => {
+            let a = document.createElement("a")
+            var text = document.createTextNode(i.breed);
+            a.appendChild(text);
+            a.setAttribute('id', i.breed)
+            dropdown.appendChild(a);
+            return i
+            //console.log(i.breed)
+        });
+
+        const getRace = document.querySelector('#myDropdown').children
+
+        for (const i of getRace) {
+
+            //console.log(i)
+            i.addEventListener('click', (event) => {
+                console.log(event.target.id)
+                getInfoLayOut = document.querySelector('.dropbtn').innerHTML = event.target.id
+
+                const targetInfo = item.data.filter((n)=> n.breed === event.target.id)
+                console.log(targetInfo[0])
+
+                getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
+                getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
+                getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
+                getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
+                console.log(getInfoLayOut)
+                // function to display names
+
+            })
+        }
+
+
+        //console.log(document.querySelector('#myDropdown').children)
+    });
+
+
+    function display() {
+
+    }
 </script>
-
-
-
 
 </html>
 
