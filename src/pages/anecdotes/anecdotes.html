@@ -39,32 +39,18 @@
 
 
 
-    <!-- side bars -->
-    <section class="d-flex flex-row px-5 py-4">
-        <!-- left -->
-        <div class="border w-50 mx-3 p-3" style="background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-            <p><span style="color: rgb(255, 136, 0); " class="font-weight-bold">Races 7</span> resultats</p>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">par...</button>
-                <div id="myDropdown" class="dropdown-content">
-
-                </div>
+    <!-- middle bars -->
+    <section class="d-flex flex-column container">
+        <div class=" d-flex justify-content-center pt-5 pb-3">
+            <button class="px-5">Afficher une anecdote</button>
+        </div>
+        <div class=" border w-100  p-3"
+            style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
+            <p style="color: rgb(255, 136, 0); text-align: center;" class="font-weight-bold">Anecdote</p>
+            <div class="d-flex justify-content-center align-items-end">
+                <p class="border">mise en forme des information</p>
             </div>
         </div>
-
-        <!-- right -->
-        <div class="w-75  mx-3 position-relative">
-
-
-            <div class="position-absolute border w-100  p-3"
-                style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-                <p style="color: rgb(255, 136, 0); " class="font-weight-bold">Person</p>
-                <div class="d-flex justify-content-center align-items-end">
-                    <p class="border">mise en forme des information</p>
-                </div>
-            </div>
-        </div>
-
     </section>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -79,13 +65,33 @@
         crossorigin="anonymous"></script>
 </body>
 
-
 <script>
+    async function testA() {
+        let request = await fetch(`https://catfact.ninja/breeds?limit=5`);
+        let repose = await request.json().then(result => {
+            //console.log(result.data)
+            let dropdown = document.querySelector("#myDropdown");
+            for (const i in result.data) {
+               // console.log(result.data[i].breed)
+                let a = document.createElement("a")
+                var text = document.createTextNode(result.data[i].breed);
+                a.appendChild(text);
+                a.setAttribute('id', result.data[i].breed)
+                dropdown.appendChild(a);
+            }
+
+        })
+            .catch("error");
+        return repose;
+    }
+
+    testA()
 
 
-
-   
+    
+    
 </script>
+
 
 
 
