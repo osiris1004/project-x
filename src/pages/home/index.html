@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,14 +9,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="./index.js"></script>
     <title>Document</title>
 </head>
 
 <body>
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(255, 136, 0);">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+    <nav class="navbar navbar-expand-lg navbar-light d-flex" style="background-color: rgb(255, 136, 0);">
+        <div class="">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +29,7 @@
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Anecdotes</a>
+                    <a class="nav-link" href="../../">Anecdotes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Races</a>
@@ -35,15 +37,26 @@
             </ul>
 
         </div>
+        </div>
+
+        <div class="ml-auto ">
+                <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true" ></i>
+        </div>
     </nav>
 
 
 
-    <!-- side bars -->
-    <section class="d-flex flex-row px-5 py-4">
+
+        <!-- side bars -->
+    <section class="d-flex flex-column flex-sm-row  px-5 py-4">
         <!-- left -->
-        <div class="border w-50 mx-3 p-3" style="background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-            <p><span style="color: rgb(255, 136, 0); " class="font-weight-bold" ">Races <span id="raceNumber"></span></span> resultats</p>
+        <div id="leftSide" class="border p-3 sideLeft" style="background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
+            <p>
+                <span style="color: rgb(255, 136, 0); " class="font-weight-bold" ">
+                    Races <span id="raceNumber"></span>
+                </span>
+                resultats
+            </p>
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn">par...</button>
                 <div id="myDropdown" class="dropdown-content">
@@ -53,9 +66,7 @@
         </div>
 
         <!-- right -->
-        <div class="w-75  mx-3 position-relative">
-
-
+        <div class="sideRight position-relative mt-2 mt-sm-0">
             <div class="position-absolute border w-100  p-3"
                 style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
                 <p style="color: rgb(255, 136, 0); " class="font-weight-bold">Person</p>
@@ -72,6 +83,7 @@
         </div>
 
     </section>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -85,6 +97,12 @@
         crossorigin="anonymous"></script>
 </body>
 
+<style>
+    .isDark{
+        background-color: black;
+    }
+</style>
+
 
 <script>
 
@@ -94,54 +112,57 @@
     fetchPromise.then(response => {
         return response.json();
     }).then(item => {
-        
-        document.querySelector('#raceNumber').innerHTML = item.data.length
+       
+        getRaceNum(item.data.length)
+        displayRaces(item.data)
+        displaySelectedRace(item.data)
+    });
 
-        
-        let dropdown = document.querySelector("#myDropdown");
-        item.data.map(i => {
+
+    const getRaceNum = (totalRaceNum) => {
+        console.log(totalRaceNum)
+        document.querySelector('#raceNumber').innerHTML = totalRaceNum
+    }
+
+    const displayRaces = (data) => {
+        const dropdown = document.querySelector("#myDropdown");
+        data.map(i => {
             let a = document.createElement("a")
             var text = document.createTextNode(i.breed);
             a.appendChild(text);
             a.setAttribute('id', i.breed)
             dropdown.appendChild(a);
-            return i
-            //console.log(i.breed)
         });
+    }
 
+    const displaySelectedRace = (data) => {
+      
         const getRace = document.querySelector('#myDropdown').children
 
-        for (const i of getRace) {
-
-            //console.log(i)
-            i.addEventListener('click', (event) => {
-                console.log(event.target.id)
-                getInfoLayOut = document.querySelector('.dropbtn').innerHTML = event.target.id
-
-                const targetInfo = item.data.filter((n)=> n.breed === event.target.id)
-                console.log(targetInfo[0])
-
+        for (const element of getRace) {
+            element.addEventListener('click', (event) => {
+                const targetInfo = data.filter((i) => i.breed === event.target.id)
+                //console.log(targetInfo[0])
+                // display on your button
+                document.querySelector(".dropbtn").innerHTML=targetInfo[0].breed
+                // display all info 
                 getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
                 getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
                 getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
                 getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
-                console.log(getInfoLayOut)
-                // function to display names
-
             })
         }
-
-
-        //console.log(document.querySelector('#myDropdown').children)
-    });
-
-
-    function display() {
-
     }
+
+
+    document.querySelector('#isDark').addEventListener('click', ()=>{
+        document.body.classList.toggle("isDark");
+    })
+    
+
+
 </script>
 
 </html>
 
-
-<!-- ctrl k, ctrl f -->
+ -->
