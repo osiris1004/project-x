@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../topLevel.css">
     <title>Document</title>
@@ -19,28 +19,28 @@
     <nav class="navbar navbar-expand-lg navbar-light d-flex" style="background-color: rgb(255, 136, 0);">
         <div class="">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">CatSting</a>
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./anecdotes.html">Anecdotes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../race/race.html">Races</a>
-                </li>
-            </ul>
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">CatSting</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./anecdotes.html">Anecdotes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../race/race.html">Races</a>
+                    </li>
+                </ul>
 
-        </div>
+            </div>
         </div>
 
         <div class="ml-auto ">
-                <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true" ></i>
+            <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
         </div>
     </nav>
 
@@ -75,27 +75,27 @@
 
 
 <script>
-   document.querySelector('#isDark').addEventListener('click', ()=>{
+    document.querySelector('#isDark').addEventListener('click', () => {
         document.body.classList.toggle("isDark");
     })
 
-    document.querySelector("#displayAnecdote").addEventListener('click', ()=>{
+    document.querySelector("#displayAnecdote").addEventListener('click', () => {
         const fetchPromise = fetch("https://catfact.ninja/fact");
-    fetchPromise.then(response => {
-        return response.json();
-    }).then(item => {
-        document.querySelector('#fact').innerHTML=item.fact
-    });
-        })
+        fetchPromise.then(response => {
+            return response.json();
+        }).then(item => {
+            document.querySelector('#fact').innerHTML = item.fact
+        });
+    })
 
 
-        // dark mode
-        document.querySelector('#isDark').addEventListener('click', ()=>{
-            
+    // dark mode
+    document.querySelector('#isDark').addEventListener('click', () => {
+
         const test = document.body.classList.toggle("isDark_");
         console.log(test)
     })
-    
+
 </script>
 
 
