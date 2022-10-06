@@ -15,11 +15,11 @@
 <title>Document</title>
 </head>
 
-<body >
+<body>
     <div id="loader"></div>
-    <main id ="main" style="display: none;">
+    <main id="main" style="display: none;">
         <!-- loading -->
-        
+
         <!-- Nav bar -->
         <nav class="navbar navbar-expand-lg navbar-light d-flex">
             <div class="">
@@ -43,43 +43,7 @@
                 </div>
             </div>
 
-        </div>
-        <!-- dark mode light icon -->
-        <div class="ml-auto ">
-            <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
-        </div>
-    </nav>
-
-    <!-- board -->
-    <section class="d-flex justify-content-center pt-5 mt-5 board flex-column flex-sm-row">
-
-        <div class="border mx-2 h">
-            <P class="text-center pt-2">anecdotes</P>
-            <p class="text-center" id="anecdotes">0</p>
-        </div>
-        <div class="border mx-2 pt-2">
-            <P class="text-center">Race</P>
-            <p class="text-center" id="race">0</p>
-        </div>
-        <div class="border mx-2 pt-2">
-            <P class="text-center">anecdotes</P>
-            <p class="text-center">Short</p>
-        </div>
-
-    </section>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-=======
+            </div>
             <!-- dark mode light icon -->
             <div class="ml-auto ">
                 <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
@@ -87,17 +51,17 @@
         </nav>
 
         <!-- board -->
-        <section class="d-flex justify-content-center pt-5 mt-5 board">
+        <section class="d-flex justify-content-center pt-5 mt-5 board flex-column flex-sm-row">
 
-            <div class="border mx-2 w-25 h">
+            <div class="border mx-2 h">
                 <P class="text-center pt-2">anecdotes</P>
                 <p class="text-center" id="anecdotes">0</p>
             </div>
-            <div class="border mx-2 w-25 pt-2">
+            <div class="border mx-2 pt-2">
                 <P class="text-center">Race</P>
                 <p class="text-center" id="race">0</p>
             </div>
-            <div class="border mx-2 w-25 pt-2">
+            <div class="border mx-2 pt-2">
                 <P class="text-center">anecdotes</P>
                 <p class="text-center">Short</p>
             </div>
@@ -115,6 +79,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+       
     </main>
 
 </body>
@@ -130,7 +95,8 @@
         margin: -76px 0 0 -76px;
         border: 16px solid #f3f3f3;
         border-radius: 50%;
-        border-top: 16px solid rgb(255, 136, 0);;
+        border-top: 16px solid rgb(255, 136, 0);
+        ;
         -webkit-animation: spin 2s linear infinite;
         animation: spin 2s linear infinite;
     }
@@ -183,16 +149,14 @@
 
 
     //// loading 
-    
+
     document.body.addEventListener("load", () => {
         setTimeout(() => {
             document.querySelector("#loader").style.display = "none";
             document.querySelector("#main").style.display = "block";
         }, 2000)
-        
-    },true)
+
+    }, true)
 </script>
 
 </html>
-
-
