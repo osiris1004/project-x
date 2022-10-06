@@ -1,0 +1,21 @@
+.navbar{
+  background-color: rgb(255, 136, 0);
+}
+
+.board div{
+  background-color: rgb(77, 76, 76);
+  border-radius: 9px;
+}
+
+.board div p:nth-child(1){
+  color: rgb(255, 136, 0);
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.board div p:nth-child(2){
+  font-size: 40px;
+  font-weight: bolder;
+  font-style: italic;
+  color: white;
+}
