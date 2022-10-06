@@ -10,7 +10,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link rel="stylesheet" href="../topLevel.css">
     <title>Document</title>
 </head>
 
@@ -29,10 +29,10 @@
                     <a class="nav-link" href="#">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../">Anecdotes</a>
+                    <a class="nav-link" href="./anecdotes.html">Anecdotes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Races</a>
+                    <a class="nav-link" href="../race/race.html">Races</a>
                 </li>
             </ul>
 
@@ -72,6 +72,8 @@
         crossorigin="anonymous"></script>
 </body>
 
+
+
 <script>
    document.querySelector('#isDark').addEventListener('click', ()=>{
         document.body.classList.toggle("isDark");
@@ -85,6 +87,14 @@
         document.querySelector('#fact').innerHTML=item.fact
     });
         })
+
+
+        // dark mode
+        document.querySelector('#isDark').addEventListener('click', ()=>{
+            
+        const test = document.body.classList.toggle("isDark_");
+        console.log(test)
+    })
     
 </script>
 
