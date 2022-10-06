@@ -15,66 +15,107 @@
 <title>Document</title>
 </head>
 
-<body>
-    <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light d-flex">
-        <div class="">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="#">CatSting</a>
-                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./home.html">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../anecdotes/anecdotes.html">Anecdotes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../race/race.html">race</a>
-                    </li>
-                </ul>
+<body >
+    <div id="loader"></div>
+    <main id ="main" style="display: none;">
+        <!-- loading -->
+        
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand-lg navbar-light d-flex">
+            <div class="">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+                    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand" href="#">CatSting</a>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./home.html">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../anecdotes/anecdotes.html">Anecdotes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../race/race.html">race</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <!-- dark mode light icon -->
-        <div class="ml-auto ">
-            <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
-        </div>
-    </nav>
+            <!-- dark mode light icon -->
+            <div class="ml-auto ">
+                <i id="isDark" class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i>
+            </div>
+        </nav>
 
-    <!-- board -->
-    <section class="d-flex justify-content-center pt-5 mt-5 board">
+        <!-- board -->
+        <section class="d-flex justify-content-center pt-5 mt-5 board">
 
-        <div class="border mx-2 w-25 h">
-            <P class="text-center pt-2">anecdotes</P>
-            <p class="text-center" id="anecdotes">0</p>
-        </div>
-        <div class="border mx-2 w-25 pt-2">
-            <P class="text-center">Race</P>
-            <p class="text-center" id="race">0</p>
-        </div>
-        <div class="border mx-2 w-25 pt-2">
-            <P class="text-center">anecdotes</P>
-            <p class="text-center">Short</p>
-        </div>
+            <div class="border mx-2 w-25 h">
+                <P class="text-center pt-2">anecdotes</P>
+                <p class="text-center" id="anecdotes">0</p>
+            </div>
+            <div class="border mx-2 w-25 pt-2">
+                <P class="text-center">Race</P>
+                <p class="text-center" id="race">0</p>
+            </div>
+            <div class="border mx-2 w-25 pt-2">
+                <P class="text-center">anecdotes</P>
+                <p class="text-center">Short</p>
+            </div>
 
-    </section>
+        </section>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </main>
 </body>
 
+<style>
+    #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        width: 120px;
+        height: 120px;
+        margin: -76px 0 0 -76px;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 16px solid rgb(255, 136, 0);;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
 
 
 
@@ -95,11 +136,24 @@
         document.querySelector('#race').innerHTML = item.data.length
     });
 
-    
+
     document.querySelector('#isDark').addEventListener('click', () => {
         document.body.classList.toggle("isDark_");
     })
 
+
+
+    //// loading 
+    
+    document.body.addEventListener("load", () => {
+        setTimeout(() => {
+            document.querySelector("#loader").style.display = "none";
+            document.querySelector("#main").style.display = "block";
+        }, 2000)
+        
+    },true)
 </script>
 
 </html>
+
+
