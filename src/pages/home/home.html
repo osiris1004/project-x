@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="./home.css">
 <link rel="stylesheet" href="../topLevel.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="./home.js"></script>
+
 <title>Document</title>
 </head>
 
@@ -49,15 +49,15 @@
 
         <div class="border mx-2 w-25 h">
             <P class="text-center pt-2">anecdotes</P>
-            <p class="text-center" id="anecdotes">255</p>
+            <p class="text-center" id="anecdotes">0</p>
+        </div>
+        <div class="border mx-2 w-25 pt-2">
+            <P class="text-center">Race</P>
+            <p class="text-center" id="race">0</p>
         </div>
         <div class="border mx-2 w-25 pt-2">
             <P class="text-center">anecdotes</P>
-            <p class="text-center id=" race"">25</p>
-        </div>
-        <div class="border mx-2 w-25 pt-2">
-            <P class="text-center">anecdotes</P>
-            <p class="text-center">25</p>
+            <p class="text-center">Short</p>
         </div>
 
     </section>
@@ -80,25 +80,22 @@
 
 <script>
     const fetchAnecdotesPromise = fetch("https://catfact.ninja/fact");
-    fetchPromise.then(response => {
+    fetchAnecdotesPromise.then(response => {
         return response.json();
     }).then(item => {
-        //document.querySelector('#fact').innerHTML = item.fact
+        console.log(item.length)
+        document.querySelector('#anecdotes').innerHTML = item.length
     });
 
 
-    // const fetchCatPromise = fetch("https://catfact.ninja/breeds?limit=10");
-    // fetchPromise.then(response => {
-    //     return response.json();
-    // }).then(item => {
+    const fetchCatPromise = fetch("https://catfact.ninja/breeds?limit=10");
+    fetchCatPromise.then(response => {
+        return response.json();
+    }).then(item => {
+        document.querySelector('#race').innerHTML = item.data.length
+    });
 
-    //     getRaceNum(item.data.length)
-    // });
-
-
-
-
-
+    
     document.querySelector('#isDark').addEventListener('click', () => {
         document.body.classList.toggle("isDark_");
     })
