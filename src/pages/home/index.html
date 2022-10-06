@@ -109,12 +109,58 @@
 
 
 
+    const fetchPromise = fetch("https://catfact.ninja/breeds?limit=10");
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(item => {
+       
+        getRaceNum(item.data.length)
+        displayRaces(item.data)
+        displaySelectedRace(item.data)
+    });
+
+
+    const getRaceNum = (totalRaceNum) => {
+        console.log(totalRaceNum)
+        document.querySelector('#raceNumber').innerHTML = totalRaceNum
+    }
+
+    const displayRaces = (data) => {
+        const dropdown = document.querySelector("#myDropdown");
+        data.map(i => {
+            let a = document.createElement("a")
+            var text = document.createTextNode(i.breed);
+            a.appendChild(text);
+            a.setAttribute('id', i.breed)
+            dropdown.appendChild(a);
+        });
+    }
+
+    const displaySelectedRace = (data) => {
+      
+        const getRace = document.querySelector('#myDropdown').children
+
+        for (const element of getRace) {
+            element.addEventListener('click', (event) => {
+                const targetInfo = data.filter((i) => i.breed === event.target.id)
+                //console.log(targetInfo[0])
+                // display on your button
+                document.querySelector(".dropbtn").innerHTML=targetInfo[0].breed
+                // display all info 
+                getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
+                getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
+                getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
+                getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
+            })
+        }
+    }
+
+
 
     document.querySelector('#isDark').addEventListener('click', ()=>{
         document.body.classList.toggle("isDark");
     })
     
-
 
 </script>
 
