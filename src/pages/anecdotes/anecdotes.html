@@ -10,6 +10,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./anecdotes.css">
     <link rel="stylesheet" href="../topLevel.css">
     <title>Document</title>
 </head>
@@ -51,11 +52,12 @@
         <div class=" d-flex justify-content-center pt-5 pb-3">
             <button class="px-5" id="displayAnecdote">Afficher une anecdote</button>
         </div>
-        <div class=" border w-100  p-3"
-            style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-            <p style="color: rgb(255, 136, 0); text-align: center;" class="font-weight-bold">Anecdote</p>
-            <div class="d-flex justify-content-center align-items-end">
-                <p id="fact">mise en forme des information</p>
+        <div id="textContainer" class=" border w-100  p-3 d-flex align-items-center">
+            <div class="w-100">
+                <p style="color: rgb(255, 136, 0); text-align: center;" class="font-weight-bold">Anecdote</p>
+                <div class="d-flex justify-content-center align-items-end">
+                    <p id="fact" class="text-center">mise en forme des information</p>
+                </div>
             </div>
         </div>
     </section>
@@ -105,4 +107,3 @@
 </html>
 
 
-<!-- ctrl k, ctrl f -->

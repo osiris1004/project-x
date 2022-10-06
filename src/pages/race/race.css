@@ -13,6 +13,9 @@
  background-color: rgb(77, 76, 76);
   width: 70%;
   color: white;
+  border-radius: 9px;
+  margin-right: 2px;
+  margin-right: 2px;
 }
 
 .sideLeft  span:nth-child(1){
@@ -21,10 +24,11 @@
 
 
 .sideRight div{
-  
   background-color:rgb(77, 76, 76); 
   color: white; 
   border-radius: 9px;
+  margin-right: 2px;
+  margin-right: 2px;
 }
 
 .sideRight{
