@@ -44,17 +44,25 @@
         </div>
     </nav>
 
+    <!-- back ground modal -->
+    <main id="main" class="main-content" ></main>
     <!-- bars layout -->
     <section class="d-flex flex-column flex-sm-row  px-5 py-4">
         <!-- left -->
         <div id="leftSide" class="border p-3 sideLeft">
-            <p>
-                <span id="racesTextColor"" class=" font-weight-bold" ">Races <span id="raceNumber"></span></span>
-                resultats
-            </p>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">par...</button>
-                <div id="myDropdown" class="dropdown-content"></div>
+            <div class="border">
+                <p>
+                    <span id="racesTextColor"" class=" font-weight-bold" ">Races <span id="raceNumber"></span></span>
+                    resultats
+                </p>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">par...</button>
+                    <div id="myDropdown" class="dropdown-content"></div>
+                </div>
+            </div>
+            <div class="border mt-5">
+                <!-- this paly all your races -->
+                <div id="allRaces" class="dropdown-content-show"></div>
             </div>
         </div>
         <!-- right -->
@@ -97,7 +105,9 @@
 
         getRaceNum(item.data.length)
         displayRaces(item.data)
-        displaySelectedRace(item.data)
+        displayRacesCountry(item.data)
+        displaySelectedRaceByRace(item.data)
+        displaySelectedRaceByRace (item.data)
     });
 
 
@@ -107,7 +117,7 @@
     }
 
     const displayRaces = (data) => {
-        const dropdown = document.querySelector("#myDropdown");
+        const dropdown = document.querySelector("#allRaces");
         data.map(i => {
             let a = document.createElement("a")
             var text = document.createTextNode(i.breed);
@@ -117,9 +127,20 @@
         });
     }
 
-    const displaySelectedRace = (data) => {
+    const displayRacesCountry = (data) => {
+        const dropdown = document.querySelector("#myDropdown");
+        data.map(i => {
+            let a = document.createElement("a")
+            var text = document.createTextNode(i.country);
+            a.appendChild(text);
+            a.setAttribute('id', i.breed)
+            dropdown.appendChild(a);
+        });
+    }
 
-        const getRace = document.querySelector('#myDropdown').children
+    const displaySelectedRaceByRace = (data) => {
+
+        const getRace = document.querySelector('#allRaces').children
 
         for (const element of getRace) {
             element.addEventListener('click', (event) => {
@@ -136,6 +157,25 @@
         }
     }
 
+    const displaySelectedRaceByCountry = (data) => {
+
+const getRace = document.querySelector('#myDropdown').children
+
+for (const element of getRace) {
+    element.addEventListener('click', (event) => {
+        const targetInfo = data.filter((i) => i.breed === event.target.id)
+        //console.log(targetInfo[0])
+        // display on your button
+        document.querySelector(".dropbtn").innerHTML = targetInfo[0].breed
+        // display all info 
+        getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
+        getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
+        getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
+        getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
+    })
+}
+}
+
 
 
     document.querySelector('#isDark').addEventListener('click', () => {
@@ -143,5 +183,4 @@
     })
 
 </script>
-
 </html>
