@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,9 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./index.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="./index.js"></script>
+    
     <title>Document</title>
 </head>
 
@@ -46,44 +46,19 @@
 
 
 
-
-        <!-- side bars -->
-    <section class="d-flex flex-column flex-sm-row  px-5 py-4">
-        <!-- left -->
-        <div id="leftSide" class="border p-3 sideLeft" style="background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-            <p>
-                <span style="color: rgb(255, 136, 0); " class="font-weight-bold" ">
-                    Races <span id="raceNumber"></span>
-                </span>
-                resultats
-            </p>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">par...</button>
-                <div id="myDropdown" class="dropdown-content">
-
-                </div>
+    <!-- middle bars -->
+    <section class="d-flex flex-column container">
+        <div class=" d-flex justify-content-center pt-5 pb-3">
+            <button class="px-5" id="displayAnecdote">Afficher une anecdote</button>
+        </div>
+        <div class=" border w-100  p-3"
+            style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
+            <p style="color: rgb(255, 136, 0); text-align: center;" class="font-weight-bold">Anecdote</p>
+            <div class="d-flex justify-content-center align-items-end">
+                <p id="fact">mise en forme des information</p>
             </div>
         </div>
-
-        <!-- right -->
-        <div class="sideRight position-relative mt-2 mt-sm-0">
-            <div class="position-absolute border w-100  p-3"
-                style="height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;">
-                <p style="color: rgb(255, 136, 0); " class="font-weight-bold">Person</p>
-                <div class="d-flex justify-content-center align-items-end">
-                    <!-- <p class="border " id="info">mise en forme des information</p> -->
-                    <div>
-                        <p>breed : <span id="breed"></span></p>
-                        <p>country : <span id="country"></span></p>
-                        <p>origin : <span id="origin"></span></p>
-                        <p>pattern : <span id="pattern"></span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </section>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -97,27 +72,27 @@
         crossorigin="anonymous"></script>
 </body>
 
-<style>
-    .isDark{
-        background-color: black;
-    }
-</style>
-
-
 <script>
-
-
-
-
-
-    document.querySelector('#isDark').addEventListener('click', ()=>{
+   document.querySelector('#isDark').addEventListener('click', ()=>{
         document.body.classList.toggle("isDark");
     })
+
+    document.querySelector("#displayAnecdote").addEventListener('click', ()=>{
+        const fetchPromise = fetch("https://catfact.ninja/fact");
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(item => {
+        document.querySelector('#fact').innerHTML=item.fact
+    });
+        })
     
-
-
 </script>
+
+
+
+
 
 </html>
 
- -->
+
+<!-- ctrl k, ctrl f -->
