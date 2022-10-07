@@ -121,3 +121,7 @@ li{
   text-decoration: none;
   display: block;
 }
+
+.pagination-button{
+  height: none;
+}
