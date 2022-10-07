@@ -55,12 +55,12 @@
                     <span id="racesTextColor"" class=" font-weight-bold" ">Races <span id="raceNumber"></span></span>
                     resultats
                 </p>
-                <div class="btnGroup d-flex"> 
-                    <div class="dropdown ">
+                <div class="d-flex d-flex flex-row">
+                    <div class="dropdown d-flex justify-content-center">
                         <button onclick="countryClick()" class="dropbtn dropDownCountry">par...</button>
                         <div id="myDropdown" class="dropdown-content myDropDownCountry"></div>
                     </div>
-                    <div class="dropdown dropdownCoat">
+                    <div class="dropdown dropdownCoat d-flex justify-content-center">
                         <button onclick="coatClick()" class="dropbtn dropdownCoat">par...</button>
                         <div id="myDropdown" class="dropdown-content myDropDownCoat"></div>
                     </div>
@@ -116,6 +116,7 @@
         displayRacesCoat(item.data)
         displaySelectedRaceByRace(item.data)
         displaySelectedRaceByCountry(item.data)
+        displaySelectedRaceByCoat(item.data)
     });
 
 
@@ -148,9 +149,8 @@
 
     const displayRacesCoat = (data) => {
         const dropdown = document.querySelector(".myDropDownCoat");
-        
+
         data.map(i => {
-            console.log(i.coat)
             let a = document.createElement("a")
             var text = document.createTextNode(i.coat);
             a.appendChild(text);
@@ -188,6 +188,29 @@
 
             element.addEventListener('click', (event) => {
                 const targetInfo = data.filter((i) => i.country === event.target.id)
+                //console.log(targetInfo[0])
+                // display on your button
+                document.querySelector(".dropbtn").innerHTML = targetInfo[0].country
+                // display all info 
+                getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
+                getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
+                getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
+                getInfoLayOut = document.querySelector('#coat').innerHTML = targetInfo[0].coat
+                getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
+            })
+        }
+    }
+
+
+    const displaySelectedRaceByCoat = (data) => {
+
+
+        const getCoat = document.querySelector(".myDropDownCoat").children
+
+        for (const element of getCoat) {
+
+            element.addEventListener('click', (event) => {
+                const targetInfo = data.filter((i) => i.coat === event.target.id)
                 //console.log(targetInfo[0])
                 // display on your button
                 document.querySelector(".dropbtn").innerHTML = targetInfo[0].country

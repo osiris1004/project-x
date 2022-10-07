@@ -5,8 +5,6 @@
   background-color: rgb(255, 136, 0);
   font-size: 16px;
   border: none;
-  width: 50%;
-  
 }
 
 .sideLeft{
@@ -67,6 +65,7 @@
   z-index: 2;
   display: none;
   width: 100%;
+  top: 26px
 
 }
 

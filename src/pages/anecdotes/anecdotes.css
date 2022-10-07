@@ -5,3 +5,27 @@
 #textContainer{
     height: 250px; background-color:rgb(77, 76, 76); color: white; border-radius: 9px;
 }
+
+.allAnecdote{
+    border: solid red;
+}
+
+.allAnecdote div{
+    border: solid red;
+}
+
+.allAnecdote div p{
+    color: red;
+}
+/* .allAnecdote #textContainer{
+    margin-top: 5px;
+}
+@media only screen and (min-width: 576px) {
+    .allAnecdote .wContent{
+        width: 200px;
+    }
+
+    .allAnecdote #textContainer{
+        margin: 5px;
+    }
+  } */
