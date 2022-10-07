@@ -70,6 +70,20 @@
                 <!-- this paly all your races -->
                 <div id="allRaces" class="dropdown-content-show"></div>
             </div>
+            <!-- pagination -->
+
+            <div>
+                <button class="pagination-button" id="prev-button" aria-label="Previous page">
+                    &lt;
+                </button>
+                <div id="pagination-numbers" class="border mt-5">
+
+                </div>
+
+                <button class="pagination-button" id="next-button" aria-label="Next page">
+                    &gt;
+                </button>
+            </div>
         </div>
         <!-- right -->
         <div class="sideRight position-relative mt-2 mt-sm-0">
@@ -105,7 +119,7 @@
 
 
 <script>
-    const fetchPromise = fetch("https://catfact.ninja/breeds?limit=3");
+    const fetchPromise = fetch("https://catfact.ninja/breeds?limit=10");
     fetchPromise.then(response => {
         return response.json();
     }).then(item => {
@@ -117,18 +131,19 @@
         displaySelectedRaceByRace(item.data)
         displaySelectedRaceByCountry(item.data)
         displaySelectedRaceByCoat(item.data)
+        pagination(item.data)
     });
 
 
     const getRaceNum = (totalRaceNum) => {
-        console.log(totalRaceNum)
+        //console.log(totalRaceNum)
         document.querySelector('#raceNumber').innerHTML = totalRaceNum
     }
 
     const displayRaces = (data) => {
         const dropdown = document.querySelector("#allRaces");
         data.map(i => {
-            let a = document.createElement("a")
+            let a = document.createElement("li")
             var text = document.createTextNode(i.breed);
             a.appendChild(text);
             a.setAttribute('id', i.breed)
@@ -223,6 +238,85 @@
             })
         }
     }
+
+
+    // pagination 
+    function pagination(data) {
+        //console.log(data)
+
+
+        const listItems = document.querySelectorAll("#allRaces li");
+        //console.log(listItems)
+        const paginationLimit = 2;
+        const pageCount = Math.ceil(listItems.length / paginationLimit);
+        let currentPage = 1;
+
+        //
+        function appendPageNumber(index) {
+            //console.log(index)
+            const paginationNumbers = document.querySelector('#pagination-numbers')
+            const pageNumber = document.createElement("button");
+            pageNumber.setAttribute("class", "pagination-number");
+            pageNumber.innerHTML = index;
+            pageNumber.setAttribute("page-index", index);
+
+            paginationNumbers.appendChild(pageNumber);
+        };
+
+        function getPaginationNumbers() {
+            
+            for (let i = 0; i <= pageCount; i++) {
+                appendPageNumber(i);
+            }
+
+        };
+
+
+        const setCurrentPage = (pageNum) => {
+            currentPage = pageNum;
+           
+
+            const prevRange = (pageNum - 1) * paginationLimit;
+            const currRange = pageNum * paginationLimit;
+
+            listItems.forEach((item, index) => {
+                
+                item.classList.add("hidden");
+                console.log(item)
+                if (index >= prevRange && index < currRange) {
+                    item.classList.remove("hidden");
+                }
+            });
+
+        };
+
+
+       
+        setCurrentPage(1);
+
+        const nextButton = document.getElementById("next-button");
+        const prevButton = document.getElementById("prev-button");
+
+        prevButton.addEventListener("click", () => {
+            setCurrentPage(currentPage - 1);
+        });
+
+        nextButton.addEventListener("click", () => {
+            setCurrentPage(currentPage + 1);
+        });
+
+        document.querySelectorAll(".pagination-number").forEach((button) => {
+            const pageIndex = Number(button.getAttribute("page-index"));
+
+            if (pageIndex) {
+                button.addEventListener("click", () => {
+                    setCurrentPage(pageIndex);
+                });
+            }
+        });
+
+    }
+
 
 
 

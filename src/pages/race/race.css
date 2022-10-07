@@ -109,3 +109,15 @@
 .show-coat {display: block;}
 
 .show-main-coat {display: block;}
+
+.hidden {
+  display: none;
+}
+
+li{
+  color: white;
+  border-bottom: solid rgb(255, 136, 0);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
