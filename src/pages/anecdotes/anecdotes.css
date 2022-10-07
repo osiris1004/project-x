@@ -7,15 +7,14 @@
 }
 
 .allAnecdote{
-    /* border: solid red; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    display: none;
 }
 
 .allAnecdote div{
     background-color:rgb(77, 76, 76); color: white; border-radius: 9px;
-    
     margin: 5px;
     width: 300px;
 }
@@ -58,4 +57,30 @@
         
         width: 100%;
     }
+}
+
+
+/* * vertical  */
+.hoz{
+    /* border: solid red; */
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+}
+.hoz div{
+    background-color:rgb(77, 76, 76); color: white; border-radius: 9px;
+    margin: 5px;
+    width: 100%;
+}
+
+/* * horizontal  */
+
+.vert{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+
+.show{
+    display: flex;
 }
