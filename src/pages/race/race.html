@@ -45,7 +45,7 @@
     </nav>
 
     <!-- back ground modal -->
-    <main id="main" class="main-content" ></main>
+    <main id="main" class="main-content"></main>
     <!-- bars layout -->
     <section class="d-flex flex-column flex-sm-row  px-5 py-4">
         <!-- left -->
@@ -55,9 +55,15 @@
                     <span id="racesTextColor"" class=" font-weight-bold" ">Races <span id="raceNumber"></span></span>
                     resultats
                 </p>
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">par...</button>
-                    <div id="myDropdown" class="dropdown-content"></div>
+                <div class="btnGroup d-flex"> 
+                    <div class="dropdown ">
+                        <button onclick="countryClick()" class="dropbtn dropDownCountry">par...</button>
+                        <div id="myDropdown" class="dropdown-content myDropDownCountry"></div>
+                    </div>
+                    <div class="dropdown dropdownCoat">
+                        <button onclick="coatClick()" class="dropbtn dropdownCoat">par...</button>
+                        <div id="myDropdown" class="dropdown-content myDropDownCoat"></div>
+                    </div>
                 </div>
             </div>
             <div class="border mt-5">
@@ -74,6 +80,7 @@
                         <p>breed : <span id="breed"></span></p>
                         <p>country : <span id="country"></span></p>
                         <p>origin : <span id="origin"></span></p>
+                        <p>coat : <span id="coat"></span></p>
                         <p>pattern : <span id="pattern"></span></p>
                     </div>
                 </div>
@@ -106,8 +113,9 @@
         getRaceNum(item.data.length)
         displayRaces(item.data)
         displayRacesCountry(item.data)
+        displayRacesCoat(item.data)
         displaySelectedRaceByRace(item.data)
-        displaySelectedRaceByRace (item.data)
+        displaySelectedRaceByCountry(item.data)
     });
 
 
@@ -133,12 +141,26 @@
             let a = document.createElement("a")
             var text = document.createTextNode(i.country);
             a.appendChild(text);
-            a.setAttribute('id', i.breed)
+            a.setAttribute('id', i.country)
+            dropdown.appendChild(a);
+        });
+    }
+
+    const displayRacesCoat = (data) => {
+        const dropdown = document.querySelector(".myDropDownCoat");
+        
+        data.map(i => {
+            console.log(i.coat)
+            let a = document.createElement("a")
+            var text = document.createTextNode(i.coat);
+            a.appendChild(text);
+            a.setAttribute('id', i.coat)
             dropdown.appendChild(a);
         });
     }
 
     const displaySelectedRaceByRace = (data) => {
+
 
         const getRace = document.querySelector('#allRaces').children
 
@@ -152,6 +174,7 @@
                 getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
                 getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
                 getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
+                getInfoLayOut = document.querySelector('#coat').innerHTML = targetInfo[0].coat
                 getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
             })
         }
@@ -159,22 +182,24 @@
 
     const displaySelectedRaceByCountry = (data) => {
 
-const getRace = document.querySelector('#myDropdown').children
+        const getCountry = document.querySelector('#myDropdown').children
 
-for (const element of getRace) {
-    element.addEventListener('click', (event) => {
-        const targetInfo = data.filter((i) => i.breed === event.target.id)
-        //console.log(targetInfo[0])
-        // display on your button
-        document.querySelector(".dropbtn").innerHTML = targetInfo[0].breed
-        // display all info 
-        getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
-        getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
-        getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
-        getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
-    })
-}
-}
+        for (const element of getCountry) {
+
+            element.addEventListener('click', (event) => {
+                const targetInfo = data.filter((i) => i.country === event.target.id)
+                //console.log(targetInfo[0])
+                // display on your button
+                document.querySelector(".dropbtn").innerHTML = targetInfo[0].country
+                // display all info 
+                getInfoLayOut = document.querySelector('#breed').innerHTML = targetInfo[0].breed
+                getInfoLayOut = document.querySelector('#country').innerHTML = targetInfo[0].country
+                getInfoLayOut = document.querySelector('#origin').innerHTML = targetInfo[0].origin
+                getInfoLayOut = document.querySelector('#coat').innerHTML = targetInfo[0].coat
+                getInfoLayOut = document.querySelector('#pattern').innerHTML = targetInfo[0].pattern
+            })
+        }
+    }
 
 
 
@@ -183,4 +208,5 @@ for (const element of getRace) {
     })
 
 </script>
+
 </html>
