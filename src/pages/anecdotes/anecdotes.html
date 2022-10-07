@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -66,7 +66,8 @@
     <!-- button list  -->
     <section class="d-flex px-5 py-5">
         <button onclick="displayAnecdoteListByClick()">Afficher toutes les anecdote</button>
-        <i onclick="verticalLayout()" class="fa fa-bars fa-3x ml-auto pr-2 " aria-hidden="true" style="transform: rotate(90deg);"></i>
+        <i onclick="verticalLayout()" class="fa fa-bars fa-3x ml-auto pr-2 " aria-hidden="true"
+            style="transform: rotate(90deg);"></i>
         <i onclick="horizontalLayout()" class="fa fa-bars fa-3x " aria-hidden="true"></i>
     </section>
 
@@ -107,12 +108,12 @@
     })
 
     //get all fact
-   
+
     const fetchPromise = fetch("https://catfact.ninja/facts");
     fetchPromise.then(response => {
         return response.json();
     }).then(item => {
-        console.log(item.data)
+        //console.log(item.data)
         //item.data.map(i=>console.log(i.fact))
         item.data.map(i => {
             //console.log(i)
@@ -122,11 +123,9 @@
 
     });
 
-    function displayAnecdoteListByClick(){
-     
+    function displayAnecdoteListByClick() {
         document.querySelector('.allAnecdote').classList.toggle('show')
-                
-            }
+    }
 
 
     function displayAnecdoteList(data) {
@@ -145,20 +144,18 @@
         container.appendChild(pTitle)
         container.appendChild(pText)
 
-       anecdoteList.append(container)
+        anecdoteList.append(container)
     }
 
-   
-   
 
     // lay out by click 
 
-    function verticalLayout(){
+    function verticalLayout() {
         document.querySelector(".allAnecdote").classList.add("vert")
         document.querySelector(".allAnecdote").classList.remove("hoz")
     }
 
-    function horizontalLayout(){
+    function horizontalLayout() {
         document.querySelector(".allAnecdote").classList.add("hoz")
         document.querySelector(".allAnecdote").classList.remove("vert")
     }
@@ -172,9 +169,5 @@
     })
 
 </script>
-
-
-
-
 
 </html>
