@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,17 +62,17 @@
         </div>
     </section>
 
-    <!-- pagination -->
-    <section class="allAnecdote">
 
-        <!-- <div id="textContainer" class=" border  p-3 d-flex align-items-center justify-content-center">
-            <div class="wContent ">
-                <p style="color: rgb(255, 136, 0); text-align: center;" class="font-weight-bold">Anecdote</p>
-                <div class="d-flex justify-content-center align-items-end">
-                    <p id="all-fact" class="text-center">mise en forme des information</p>
-                </div>
-            </div>
-        </div> -->
+    <!-- button list  -->
+    <section class="d-flex px-5 py-5">
+        <button onclick="displayAnecdoteListByClick()">Afficher toutes les anecdote</button>
+        <i onclick="verticalLayout()" class="fa fa-bars fa-3x ml-auto pr-2 " aria-hidden="true" style="transform: rotate(90deg);"></i>
+        <i onclick="horizontalLayout()" class="fa fa-bars fa-3x " aria-hidden="true"></i>
+    </section>
+
+    <!-- pagination -->
+    <section class="allAnecdote container">
+
 
     </section>
 
@@ -102,43 +102,67 @@
             return response.json();
         }).then(item => {
             document.querySelector('#fact').innerHTML = item.fact
+
         });
     })
 
-    // get all fact
-    // const fetchPromise = fetch("https://catfact.ninja/facts");
-    //     fetchPromise.then(response => {
-    //         return response.json();
-    //     }).then(item => {
-    //        console.log(item.data)
-    //        //item.data.map(i=>console.log(i.fact))
+    //get all fact
+   
+    const fetchPromise = fetch("https://catfact.ninja/facts");
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(item => {
+        console.log(item.data)
+        //item.data.map(i=>console.log(i.fact))
+        item.data.map(i => {
+            //console.log(i)
+            displayAnecdoteList(i.fact)
 
-    //        item.data.map(i=>{
-    //             document.querySelector('#all-fact').innerHTML = i.fact
-    //        })
-            
-    //     });
+        })
 
- 
-    let anecdoteList = document.querySelector('.allAnecdote')
+    });
 
-    let container = document.createElement("div")
-    let pTitle = document.createElement("p")
-    let pText = document.createElement("p")
-    let anecdoteTitle = document.createTextNode("anecdotedd")
-    let anecdoteText = document.createTextNode("pdd")
+    function displayAnecdoteListByClick(){
+     
+        document.querySelector('.allAnecdote').classList.toggle('show')
+                
+            }
 
-    pTitle.appendChild(anecdoteTitle)
-    pText.appendChild(anecdoteText)
-    
-    container.setAttribute('class', 'container')
-    container.appendChild(pTitle)
-    container.appendChild(pText )
 
-    anecdoteList.appendChild(container)
-        console.log(anecdoteList.innerHTML)
+    function displayAnecdoteList(data) {
+        let anecdoteList = document.querySelector('.allAnecdote')
 
-       
+        let container = document.createElement("div")
+        let pTitle = document.createElement("p")
+        let pText = document.createElement("p")
+        let anecdoteTitle = document.createTextNode("anecdotedd")
+        let anecdoteText = document.createTextNode(data)
+
+        pTitle.appendChild(anecdoteTitle)
+        pText.appendChild(anecdoteText)
+
+        container.setAttribute('class', 'container')
+        container.appendChild(pTitle)
+        container.appendChild(pText)
+
+       anecdoteList.append(container)
+    }
+
+   
+   
+
+    // lay out by click 
+
+    function verticalLayout(){
+        document.querySelector(".allAnecdote").classList.add("vert")
+        document.querySelector(".allAnecdote").classList.remove("hoz")
+    }
+
+    function horizontalLayout(){
+        document.querySelector(".allAnecdote").classList.add("hoz")
+        document.querySelector(".allAnecdote").classList.remove("vert")
+    }
+
 
     // dark mode
     document.querySelector('#isDark').addEventListener('click', () => {
@@ -154,5 +178,3 @@
 
 
 </html>
-
-
