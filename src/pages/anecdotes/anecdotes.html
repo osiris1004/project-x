@@ -63,7 +63,7 @@
     </section>
 
     <!-- pagination -->
-    <section class="allAnecdote">
+    <section class="allAnecdote container">
 
         <!-- <div id="textContainer" class=" border  p-3 d-flex align-items-center justify-content-center">
             <div class="wContent ">
@@ -102,43 +102,48 @@
             return response.json();
         }).then(item => {
             document.querySelector('#fact').innerHTML = item.fact
+
         });
     })
 
-    // get all fact
-    // const fetchPromise = fetch("https://catfact.ninja/facts");
-    //     fetchPromise.then(response => {
-    //         return response.json();
-    //     }).then(item => {
-    //        console.log(item.data)
-    //        //item.data.map(i=>console.log(i.fact))
+    //get all fact
+    const fetchPromise = fetch("https://catfact.ninja/facts");
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(item => {
+        console.log(item.data)
+        //item.data.map(i=>console.log(i.fact))
+        item.data.map(i => {
+            //console.log(i)
+            displayAnecdoteList(i.fact)
+        })
 
-    //        item.data.map(i=>{
-    //             document.querySelector('#all-fact').innerHTML = i.fact
-    //        })
-            
-    //     });
+    });
 
- 
-    let anecdoteList = document.querySelector('.allAnecdote')
 
-    let container = document.createElement("div")
-    let pTitle = document.createElement("p")
-    let pText = document.createElement("p")
-    let anecdoteTitle = document.createTextNode("anecdotedd")
-    let anecdoteText = document.createTextNode("pdd")
 
-    pTitle.appendChild(anecdoteTitle)
-    pText.appendChild(anecdoteText)
-    
-    container.setAttribute('class', 'container')
-    container.appendChild(pTitle)
-    container.appendChild(pText )
 
-    anecdoteList.appendChild(container)
-        console.log(anecdoteList.innerHTML)
+    function displayAnecdoteList(data) {
+        let anecdoteList = document.querySelector('.allAnecdote')
 
-       
+        let container = document.createElement("div")
+        let pTitle = document.createElement("p")
+        let pText = document.createElement("p")
+        let anecdoteTitle = document.createTextNode("anecdotedd")
+        let anecdoteText = document.createTextNode(data)
+
+        pTitle.appendChild(anecdoteTitle)
+        pText.appendChild(anecdoteText)
+
+        container.setAttribute('class', 'container')
+        container.appendChild(pTitle)
+        container.appendChild(pText)
+
+        anecdoteList.append(container)
+
+    }
+
+
 
     // dark mode
     document.querySelector('#isDark').addEventListener('click', () => {
@@ -154,5 +159,3 @@
 
 
 </html>
-
-

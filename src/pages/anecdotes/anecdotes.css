@@ -7,16 +7,37 @@
 }
 
 .allAnecdote{
-    border: solid red;
+    /* border: solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .allAnecdote div{
-    border: solid red;
+    background-color:rgb(77, 76, 76); color: white; border-radius: 9px;
+    
+    margin: 5px;
+    width: 300px;
 }
 
 .allAnecdote div p{
-    color: red;
+    text-align: center;
+    margin: 0;
 }
+
+
+.allAnecdote div p:nth-child(1){
+    color: rgb(255, 136, 0);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bolder;
+}
+.allAnecdote div p:nth-child(2){
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
 /* .allAnecdote #textContainer{
     margin-top: 5px;
 }
@@ -29,3 +50,12 @@
         margin: 5px;
     }
   } */
+
+
+/* queey selector */
+  @media only screen and (max-width: 576px) {
+    .allAnecdote div{
+        
+        width: 100%;
+    }
+}
