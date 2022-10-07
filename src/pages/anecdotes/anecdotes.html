@@ -61,6 +61,21 @@
             </div>
         </div>
     </section>
+
+    <!-- pagination -->
+    <section class="allAnecdote">
+
+        <!-- <div id="textContainer" class=" border  p-3 d-flex align-items-center justify-content-center">
+            <div class="wContent ">
+                <p style="color: rgb(255, 136, 0); text-align: center;" class="font-weight-bold">Anecdote</p>
+                <div class="d-flex justify-content-center align-items-end">
+                    <p id="all-fact" class="text-center">mise en forme des information</p>
+                </div>
+            </div>
+        </div> -->
+
+    </section>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -90,6 +105,40 @@
         });
     })
 
+    // get all fact
+    // const fetchPromise = fetch("https://catfact.ninja/facts");
+    //     fetchPromise.then(response => {
+    //         return response.json();
+    //     }).then(item => {
+    //        console.log(item.data)
+    //        //item.data.map(i=>console.log(i.fact))
+
+    //        item.data.map(i=>{
+    //             document.querySelector('#all-fact').innerHTML = i.fact
+    //        })
+            
+    //     });
+
+ 
+    let anecdoteList = document.querySelector('.allAnecdote')
+
+    let container = document.createElement("div")
+    let pTitle = document.createElement("p")
+    let pText = document.createElement("p")
+    let anecdoteTitle = document.createTextNode("anecdotedd")
+    let anecdoteText = document.createTextNode("pdd")
+
+    pTitle.appendChild(anecdoteTitle)
+    pText.appendChild(anecdoteText)
+    
+    container.setAttribute('class', 'container')
+    container.appendChild(pTitle)
+    container.appendChild(pText )
+
+    anecdoteList.appendChild(container)
+        console.log(anecdoteList.innerHTML)
+
+       
 
     // dark mode
     document.querySelector('#isDark').addEventListener('click', () => {
